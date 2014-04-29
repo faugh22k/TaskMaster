@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.GridLayout;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
 
@@ -32,6 +33,10 @@ public class TaskGrid extends GridLayout{
     private LinkedList<Task> current;
     private LinkedList<Task> inFuture;
 
+    private LinkedList<Task> selectedCategory;
+
+    private HashSet<String> categories;
+
     // these hold the order of the tasks according to different priorities
 
     // order: high priority current, then normal current, low current, then high future, normal future, low future.
@@ -42,6 +47,8 @@ public class TaskGrid extends GridLayout{
 
     // order: high, normal, low (within individual categories, by due date)
     private PriorityQueue<Task> orderedByPriority;
+
+    private PriorityQueue<Task> currentSorting;
 
     public TaskGrid(Context context){
         super(context);
@@ -58,6 +65,8 @@ public class TaskGrid extends GridLayout{
         orderedByStrictDate = new PriorityQueue<Task>(10, new TaskOrderRelaxedDueDate());
         orderedByRelaxedDate = new PriorityQueue<Task>(10, new TaskOrderStrictDueDate());
         orderedByPriority = new PriorityQueue<Task>(10, new TaskOrderPriority());
+
+        currentSorting = orderedByRelaxedDate;
 
     }
 
@@ -224,6 +233,26 @@ public class TaskGrid extends GridLayout{
                     inFuture.remove(task);
                     current.add(task);
                 }
+            }
+        }
+    }
+
+    public void addCategory(String category){
+        if(!categories.contains(category)){
+            categories.add(category);
+        }
+    }
+
+    public void getCategoryList(String category){
+        if(!categories.contains(category)){
+            return;
+        }
+
+        selectedCategory = new LinkedList<Task>();
+
+        for (Task current : currentSorting){
+            if(current.isCategory(category)){
+                selectedCategory.add(current);
             }
         }
     }

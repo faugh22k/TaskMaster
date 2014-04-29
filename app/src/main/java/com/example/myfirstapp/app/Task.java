@@ -49,7 +49,6 @@ public class Task extends View{
         this(text, ImportanceLevel.normal, context);
     }
 
-
     public ImportanceLevel getImportance(){
         return info.getImportance();
     }
@@ -80,6 +79,18 @@ public class Task extends View{
 
     public void setColor(Color color){
         info.setColor(color);
+    }
+
+    public boolean isCategory(String category){
+        return info.isCategory(category);
+    }
+
+    public void addCategory(String category){
+        info.addCategory(category);
+    }
+
+    public void removeCategory(String category){
+        info.removeCategory(category);
     }
 
     @Override

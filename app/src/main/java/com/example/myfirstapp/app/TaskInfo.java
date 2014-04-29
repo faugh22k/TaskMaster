@@ -3,7 +3,9 @@ package com.example.myfirstapp.app;
 import android.graphics.Color;
 
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedList;
 
 /**
  * Store all of the settings of the task
@@ -24,6 +26,8 @@ public class TaskInfo {
     private boolean isCurrent;
     private Color color;
 
+    private ArrayList<String> categories;
+
     public TaskInfo(){
         this(ImportanceLevel.normal, true, null);
     }
@@ -43,6 +47,7 @@ public class TaskInfo {
         this.due = due;
         this.isCurrent = isCurrent;
         importance = level;
+        categories = new ArrayList<String>(5);
     }
 
     public boolean determineIsCurrent(){
@@ -104,5 +109,19 @@ public class TaskInfo {
 
     public void setColor(Color color){
         this.color = color;
+    }
+
+    public void addCategory(String category){
+        if(!categories.contains(category)){
+            categories.add(category);
+        }
+    }
+
+    public void removeCategory(String category){
+        categories.remove(category);
+    }
+
+    public boolean isCategory(String category){
+        return categories.contains(category);
     }
 }
