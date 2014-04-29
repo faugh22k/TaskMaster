@@ -21,9 +21,12 @@ public class TaskInfo {
     // low, normal, or high importance possible
     private ImportanceLevel importance;
 
-    // set to true if due is within certain range of current date
-    // said determination (namely, retrieval of current date) not yet done
+    // TODO set to true if due is within certain range of current date
+    // TODO said determination (namely, retrieval of current date) not yet done
     private boolean isCurrent;
+
+    private boolean completed;
+
     private Color color;
 
     private ArrayList<String> categories;
@@ -48,6 +51,7 @@ public class TaskInfo {
         this.isCurrent = isCurrent;
         importance = level;
         categories = new ArrayList<String>(5);
+        completed = false;
     }
 
     public boolean determineIsCurrent(){
