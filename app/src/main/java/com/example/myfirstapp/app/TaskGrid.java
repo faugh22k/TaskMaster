@@ -50,6 +50,9 @@ public class TaskGrid extends GridLayout{
 
     private PriorityQueue<Task> currentSorting;
 
+    private DisplayState displayState;
+    private SortState sortState;
+
     public TaskGrid(Context context){
         super(context);
         // TODO read in initial values from memory somewhere??
@@ -67,6 +70,9 @@ public class TaskGrid extends GridLayout{
         orderedByPriority = new PriorityQueue<Task>(10, new TaskOrderPriority());
 
         currentSorting = orderedByRelaxedDate;
+
+        displayState = DisplayState.all;
+        sortState = SortState.relaxedDate;
 
     }
 
