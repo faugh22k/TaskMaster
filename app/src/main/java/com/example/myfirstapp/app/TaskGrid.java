@@ -3,8 +3,12 @@ package com.example.myfirstapp.app;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.GridLayout;
+import android.widget.TextView;
 
 import java.util.Date;
 import java.util.HashSet;
@@ -16,7 +20,7 @@ import java.util.PriorityQueue;
  */
 // TODO should change minimum api version to ...14? (ice cream sandwich)
 @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
-public class TaskGrid extends GridLayout{
+public class TaskGrid extends BaseAdapter {
 
     // TODO after adding priority queues, might well not need all those linked lists
 
@@ -52,8 +56,10 @@ public class TaskGrid extends GridLayout{
     private DisplayState displayState;
     private SortState sortState;
 
+    private Context context;
+
     public TaskGrid(Context context){
-        super(context);
+        this.context = context;
         // TODO read in initial values from memory somewhere??
 
         allTasks = new LinkedList<Task>();
@@ -203,7 +209,7 @@ public class TaskGrid extends GridLayout{
 
     // creates a new task to add to the grid, and the lists
     public void createNewTask(String text, ImportanceLevel level, Date due){
-        Task newTask = new Task(text, level, due, this.getContext());
+        Task newTask = new Task(text, level, due, context);
 
         allTasks.add(newTask);
         orderedByPriority.add(newTask);
@@ -260,5 +266,53 @@ public class TaskGrid extends GridLayout{
                 selectedCategory.add(current);
             }
         }
+    }
+
+
+
+
+    /* (non-Javadoc)
+ * @see android.widget.Adapter#getView(int, android.view.View, android.view.ViewGroup)
+ */
+    @Override
+    public View getView(int index, View convertView, ViewGroup parent) {
+        //this probably needs to be moved for efficiency
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        View gridView;
+
+        if (convertView == null) {
+
+            gridView = new View(context);
+
+            //get layout form main screen
+            gridView = inflater.inflate(R.layout.activity_main, null);
+
+            // set task text into textview
+            TextView textView = (TextView) gridView.findViewById(R.id.grid_item_text);
+            textView.setText(getItem(index).getText());
+
+        } else {
+            gridView = (View) convertView;
+        }
+
+        return gridView;
+    }
+
+
+    @Override
+    public int getCount() {
+        return currentSorting.size();
+    }
+
+    @Override
+    public Task getItem(int index) {
+        Task[] tasks = (Task[])currentSorting.toArray();
+        return tasks[index];
+    }
+
+    @Override
+    public long getItemId(int index) {
+        return index;
     }
 }

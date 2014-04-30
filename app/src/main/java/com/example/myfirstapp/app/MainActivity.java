@@ -12,6 +12,9 @@ import android.widget.Button;
 import android.net.Uri;
 import android.view.View.OnClickListener;
 
+import java.util.Calendar;
+import java.util.Date;
+
 public class MainActivity extends ActionBarActivity {
 
 
@@ -23,14 +26,16 @@ public class MainActivity extends ActionBarActivity {
     Button importance;
     Button date;
 
+    TaskGrid taskGrid;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         GridView gridview = (GridView) findViewById(R.id.taskGrid);
-        TaskAdapter ta = new TaskAdapter(getApplicationContext());
-        gridview.setAdapter(ta);
+        taskGrid = new TaskGrid(getApplicationContext());
+        gridview.setAdapter(taskGrid);
 
         addListenerOnButton();
         /*
@@ -57,6 +62,7 @@ public class MainActivity extends ActionBarActivity {
 
                //needs to change view and make a new task
 
+                taskGrid.createNewTask("Hello World!!!", ImportanceLevel.normal, new Date(Calendar.MILLISECOND));
             }
 
         });
@@ -67,6 +73,7 @@ public class MainActivity extends ActionBarActivity {
             public void onClick(View arg0) {
 
                 //delete task
+                // (need to know which task to create)
 
             }
 

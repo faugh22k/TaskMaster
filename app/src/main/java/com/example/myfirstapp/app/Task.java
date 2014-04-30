@@ -95,6 +95,8 @@ public class Task extends View{
 
     public TaskText getTaskText() { return text;}
 
+    public String getText() { return text.getText();}
+
     @Override
     public void onDraw(Canvas canvas){
         canvas.drawRect(0, 0, 100, 100, background);
