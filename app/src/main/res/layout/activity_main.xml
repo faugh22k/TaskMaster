@@ -2,7 +2,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_weight="5"
     tools:context="com.example.myfirstapp.app.MainActivity">
 
 
@@ -12,8 +11,7 @@
         android:layout_height="700dp"
         android:layout_width="125dp"
         android:orientation="vertical"
-        android:background="@color/blue"
-        android:layout_weight="1">
+        android:background="@color/blue">
 
         <TextView
             android:id="@+id/sortBy"
@@ -77,13 +75,11 @@
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
         android:numColumns="5"
-        android:numRows="5"
         android:gravity="center_horizontal"
         android:paddingTop="40dp"
         android:paddingLeft="40dp"
         android:columnWidth="50dp"
         android:verticalSpacing="50dp"
-        android:columnHeight="50dp"
         android:stretchMode="columnWidth" >
 
     </GridView>
@@ -94,8 +90,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@+id/label"
-        android:layout_marginTop="5px"
-        android:textSize="15px" >
+        android:layout_marginTop="5dp"
+        android:textSize="15sp" >
     </TextView>
 
     <!--new layout on top: action bar, textview, actionbar -->

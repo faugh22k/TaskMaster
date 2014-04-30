@@ -6,10 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridView;
-import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
-import android.net.Uri;
 import android.view.View.OnClickListener;
 
 import java.util.Calendar;
@@ -22,7 +19,7 @@ public class MainActivity extends ActionBarActivity {
     Button create;
     Button delete;
     //sort buttons
-    Button defaultsort;
+    Button defaultSort;
     Button importance;
     Button date;
 
@@ -51,7 +48,7 @@ public class MainActivity extends ActionBarActivity {
 
         create = (Button) findViewById(R.id.createB);
         delete = (Button) findViewById(R.id.deleteB);
-        defaultsort = (Button) findViewById(R.id.defaultB);
+        defaultSort = (Button) findViewById(R.id.defaultB);
         importance = (Button) findViewById(R.id.importanceB);
         date = (Button) findViewById(R.id.dateB);
 
@@ -78,7 +75,7 @@ public class MainActivity extends ActionBarActivity {
             }
 
         });
-        defaultsort.setOnClickListener(new OnClickListener() {
+        defaultSort.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
