@@ -93,6 +93,8 @@ public class Task extends View{
         info.removeCategory(category);
     }
 
+    public TaskText getTaskText() { return text;}
+
     @Override
     public void onDraw(Canvas canvas){
         canvas.drawRect(0, 0, 100, 100, background);

@@ -43,14 +43,14 @@
             android:layout_height="25dp"
             android:text="Category" />
         <!-- Drop down menu for categories-->
-         <Spinner
+        <Spinner
             android:id="@+id/categoryMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:entries="@array/cat_array"
             android:prompt="@string/cat_prompt" />
 
-        <!--delete/add-->
+        <!--delete/add feature-->
         <TextView
             android:id="@+id/Task"
             android:layout_width="match_parent"
@@ -58,7 +58,7 @@
             android:text="Task Center" />
 
         <Button
-            android:id="@+id/createB"
+            android:id="@+id/create"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Create" />
@@ -97,8 +97,9 @@
         android:layout_marginTop="5px"
         android:textSize="15px" >
     </TextView>
+    <!--the input area. not sure how to make this pretty -->
 
-    <!--new layout on top: action bar, textview, actionbar -->
+
 
 
 </RelativeLayout>

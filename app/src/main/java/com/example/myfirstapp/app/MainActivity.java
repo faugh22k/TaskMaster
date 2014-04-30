@@ -4,15 +4,104 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-
+import android.view.View;
+import android.widget.GridView;
+import android.widget.Toast;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
+import android.net.Uri;
+import android.view.View.OnClickListener;
 
 public class MainActivity extends ActionBarActivity {
+
+
+    //Create new task button
+    Button create;
+    Button delete;
+    //sort buttons
+    Button defaultsort;
+    Button importance;
+    Button date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        GridView gridview = (GridView) findViewById(R.id.taskGrid);
+        TaskAdapter ta = new TaskAdapter(getApplicationContext());
+        gridview.setAdapter(ta);
+
+        addListenerOnButton();
+        /*
+          Set click listener
+
+        gridview.setOnItemClickListener(new OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                Toast.makeText(HelloGridView.this, "" + position, Toast.LENGTH_SHORT).show();
+                */
     }
+
+    public void addListenerOnButton() {
+
+        create = (Button) findViewById(R.id.createB);
+        delete = (Button) findViewById(R.id.deleteB);
+        defaultsort = (Button) findViewById(R.id.defaultB);
+        importance = (Button) findViewById(R.id.importanceB);
+        date = (Button) findViewById(R.id.dateB);
+
+        create.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+
+               //needs to change view and make a new task
+
+            }
+
+        });
+
+         delete.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+
+                //delete task
+
+            }
+
+        });
+        defaultsort.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+
+                //set to default ordering
+
+            }
+
+        });
+        importance.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+
+                //set ordering by importance
+            }
+
+        });
+        date.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+
+                //set ordering by date
+
+            }
+
+        });
+    }
+
 
 
     @Override
